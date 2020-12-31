@@ -15,6 +15,8 @@ A timer is used to call the update function 100 times a second.
 
 In the example I connect two LEDs to two pins and animate them and let them glitch out a bit.
 
+It is developed and tested on a WeMOS D1 mini pro, but it should work fine on about every microcontroller I'd say.
+
 
 ### Glitch.h
 
