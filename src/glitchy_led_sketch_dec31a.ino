@@ -17,8 +17,12 @@ Glitch glitch(LED_PIN, LOW);
 Glitch glitch2(LED_PIN_2, LOW);
 
 // Call this 100 times a second please
-bool intHandler(void* argument) {
+bool intHandlerOne(void* argument) {
   glitch.step();
+  return true;
+}
+
+bool intHandlerTwo(void* argument) {
   glitch2.step();
   return true;
 }
@@ -46,8 +50,10 @@ void setup() {
   glitch.randomize();
   glitch2.randomize();
 
-  // set up timer
-  timer.every(ANIM_INTERVAL, intHandler);
+  // set up timers
+  // The second one runs little bit faster to let the lights drift
+  timer.every(ANIM_INTERVAL, intHandlerOne);
+  timer.every(ANIM_INTERVAL - 1, intHandlerTwo);
 }
 
 void loop() {
